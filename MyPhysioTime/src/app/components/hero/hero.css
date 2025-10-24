@@ -1,0 +1,43 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 10%;
+  background-color: #eaf0ff;
+  border-radius: 15px;
+  margin: 40px auto;
+}
+
+.hero-content {
+  flex: 1;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  color: #1a2c4d;
+}
+
+.hero-content p {
+  margin: 15px 0;
+  color: #555;
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-primary {
+  background-color: #0b2b5b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.hero-image img {
+  width: 350px;
+  border-radius: 20px;
+}
