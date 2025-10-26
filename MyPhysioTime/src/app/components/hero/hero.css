@@ -1,9 +1,12 @@
+.back{
+  background-color: #F5F5F5;
+}
 .hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 60px 10%;
-  background-color: #eaf0ff;
+  background-color: #002D8E40;
   border-radius: 15px;
   margin: 40px auto;
 }
@@ -35,9 +38,50 @@
   padding: 10px 20px;
   border-radius: 25px;
   cursor: pointer;
+  font-size: large;
 }
 
 .hero-image img {
-  width: 350px;
-  border-radius: 20px;
+  width: 500px;
+  border-radius: 200px;
+}
+
+.hero-extra {
+  position: relative;
+  padding: 40px 10%;
+  margin-bottom: 40px;
+}
+
+.decorator-square {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 80px;
+  background-color: #0b2b5b;
+}
+
+.hero-extra-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.hero-extra p {
+  text-align: left;
+  margin: 0;
+  flex: 2; /* Toma más espacio que el botón */
+  font-size: 1.1rem;
+  color: #555;
+  margin-left:250px;
+}
+
+.hero-extra button.btn-primary {
+  flex: 0 0 auto; /* No crece ni se encoge */
+  text-align: end;
+  margin-right: 250px;
+  font-size: 1.3rem;
 }
