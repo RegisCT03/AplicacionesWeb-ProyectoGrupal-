@@ -1,0 +1,17 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms'; 
+
+// Corrección: Importa 'LoginComponent' desde 'login.component'
+import { LoginComponent } from './login/login';
+import { RegisterComponent } from './register/register.component';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    LoginComponent,
+    RegisterComponent
+  ]
+})
+export class AuthModule { }

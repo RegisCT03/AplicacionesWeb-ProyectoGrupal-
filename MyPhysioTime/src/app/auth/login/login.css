@@ -1,0 +1,92 @@
+/* Contenedor principal */
+.login-wrapper {
+  display: flex;
+  width: 80vw; /* O un ancho fijo, ej: 900px */
+  max-width: 1000px;
+  margin: 5rem auto; /* Centrado en la página */
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  overflow: hidden; /* Para que los bordes redondeados afecten a los hijos */
+}
+
+/* Panel de la imagen (Izquierda) */
+.image-panel {
+  flex: 1; /* Ocupa la mitad del espacio */
+  /* Puedes colocar una imagen real en la propiedad background-image o usar una etiqueta <img> en HTML. */
+  background-color: #e9ecef; /* color de fondo de reserva */
+  background-position: center center;
+  background-size: cover;
+  min-height: 500px; /* Ajusta la altura */
+}
+
+/* Panel del formulario (Derecha) */
+.form-panel {
+  flex: 1; /* Ocupa la otra mitad */
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-panel h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333; /* O tu color de marca */
+  margin-bottom: 2rem;
+}
+
+/* Estilos para los campos del formulario */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box; /* Importante para que el padding no afecte el ancho */
+}
+
+/* Estilos del botón */
+.submit-button {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #3A4A7D; /* El color azul de tu diseño */
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #2c3a6d; /* Un tono más oscuro al pasar el mouse */
+}
+
+.submit-button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+/* Enlace de registro */
+.register-link {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.register-link a {
+  color: #3A4A7D;
+  text-decoration: none;
+  font-weight: 600;
+}

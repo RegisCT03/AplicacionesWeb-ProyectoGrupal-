@@ -1,0 +1,133 @@
+/* Contenedor principal - Similar al de Login */
+.register-wrapper {
+  display: flex;
+  width: 80vw;
+  max-width: 1200px; /* Un poco más ancho para más campos */
+  margin: 5rem auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+/* Panel de la imagen (Izquierda) - Similar al de Login */
+.image-panel {
+  flex: 1; 
+  background-size: cover;
+  min-height: 600px; /* Ajusta la altura según la cantidad de campos */
+}
+
+/* Panel del formulario (Derecha) */
+.form-panel {
+  flex: 2; /* Puedes darle más espacio si el formulario es largo */
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente el contenido */
+}
+
+.form-panel h2 {
+  font-size: 2.2rem; /* Un poco más grande si quieres */
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center; /* Centra el título */
+}
+
+/* Contenedor de cuadrícula para los campos de dos columnas */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas de igual ancho */
+  gap: 1.5rem; /* Espacio entre los campos */
+  margin-bottom: 2rem; /* Espacio antes del botón */
+}
+
+/* Estilos para los grupos de formulario - Similar al de Login */
+.form-group {
+  margin-bottom: 0; /* Ya tenemos gap en la cuadrícula */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* Mensajes de error */
+.error-message {
+  color: #dc3545; /* Rojo */
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+}
+
+/* Estilos del botón - Similar al de Login */
+.submit-button {
+  width: 100%;
+  padding: 0.9rem; /* Un poco más de padding para que se vea bien */
+  border: none;
+  border-radius: 8px;
+  background-color: #3A4A7D; 
+  color: white;
+  font-size: 1.1rem; /* Un poco más grande */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem; /* Espacio superior */
+}
+
+.submit-button:hover {
+  background-color: #2c3a6d;
+}
+
+.submit-button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+/* Enlace de login */
+.login-link {
+  margin-top: 1.5rem; /* Menos margen que en el login, si el botón está más arriba */
+  text-align: center;
+}
+
+.login-link a {
+  color: #3A4A7D;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Media Queries para responsividad (opcional pero recomendado) */
+@media (max-width: 768px) {
+  .register-wrapper {
+    flex-direction: column; /* Apila los paneles verticalmente */
+    width: 95vw;
+    margin: 2rem auto;
+  }
+
+  .image-panel {
+    display: none; /* Oculta la imagen en móviles para ahorrar espacio */
+    min-height: 150px; /* Si decides mantenerla */
+  }
+
+  .form-panel {
+    padding: 1.5rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr; /* Una sola columna en móviles */
+  }
+
+  .form-panel h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+}

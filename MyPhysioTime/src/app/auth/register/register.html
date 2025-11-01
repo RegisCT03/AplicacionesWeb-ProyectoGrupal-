@@ -1,0 +1,110 @@
+<div class="register-wrapper">
+
+  <div class="image-panel">
+  </div>
+
+  <div class="form-panel">
+    <h2>Regístrate</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="nombre">Nombre (s)</label>
+          <input 
+            id="nombre" 
+            type="text" 
+            formControlName="nombre"
+            placeholder="Tu nombre">
+          
+          <div *ngIf="f['nombre'].touched && f['nombre'].errors" class="error-message">
+            <div *ngIf="f['nombre'].errors?.['required']">El nombre es requerido.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="apellido">Apellidos (s)</label>
+          <input 
+            id="apellido" 
+            type="text" 
+            formControlName="apellido"
+            placeholder="Tu apellido">
+
+          <div *ngIf="f['apellido'].touched && f['apellido'].errors" class="error-message">
+            <div *ngIf="f['apellido'].errors?.['required']">El apellido es requerido.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="correo">Correo Electronico</label>
+          <input 
+            id="correo" 
+            type="email" 
+            formControlName="correoElectronico"
+            placeholder="tu@correo.com">
+          
+          <div *ngIf="f['correoElectronico'].touched && f['correoElectronico'].errors" class="error-message">
+            <div *ngIf="f['correoElectronico'].errors?.['required']">El correo es requerido.</div>
+            <div *ngIf="f['correoElectronico'].errors?.['email']">Debe ser un formato de correo válido.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Número telefonico</label>
+          <input 
+            id="telefono" 
+            type="tel" 
+            formControlName="numeroTelefonico"
+            placeholder="Ej: 55 1234 5678">
+
+          <div *ngIf="f['numeroTelefonico'].touched && f['numeroTelefonico'].errors" class="error-message">
+            <div *ngIf="f['numeroTelefonico'].errors?.['required']">El teléfono es requerido.</div>
+            <div *ngIf="f['numeroTelefonico'].errors?.['pattern']">Debe ser un número de 10 dígitos.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="contrasena">Contraseña</label>
+          <input 
+            id="contrasena" 
+            type="password" 
+            formControlName="contrasena"
+            placeholder="••••••••">
+          
+          <div *ngIf="f['contrasena'].touched && f['contrasena'].errors" class="error-message">
+            <div *ngIf="f['contrasena'].errors?.['required']">La contraseña es requerida.</div>
+            <div *ngIf="f['contrasena'].errors?.['minlength']">Mínimo 6 caracteres.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmarContrasena">Confirmar contraseña</label>
+          <input 
+            id="confirmarContrasena" 
+            type="password" 
+            formControlName="confirmarContrasena"
+            placeholder="••••••••">
+          
+          <div *ngIf="f['confirmarContrasena'].touched && f['confirmarContrasena'].errors" class="error-message">
+            <div *ngIf="f['confirmarContrasena'].errors?.['required']">Confirma tu contraseña.</div>
+          </div>
+
+          <div *ngIf="f['confirmarContrasena'].touched && registerForm.errors?.['passwordMismatch']" class="error-message">
+            Las contraseñas no coinciden.
+          </div>
+
+        </div>
+      </div> 
+
+      <button type="submit" class="submit-button" [disabled]="registerForm.invalid">
+        Registrarse
+      </button>
+
+    </form>
+    
+    <div class="login-link">
+      <p>¿Ya tienes una cuenta? <a routerLink="/login">Inicia Sesión aquí</a></p>
+    </div>
+  </div>
+
+</div>
