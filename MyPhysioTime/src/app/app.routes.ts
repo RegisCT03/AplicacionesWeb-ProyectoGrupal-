@@ -1,18 +1,21 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './auth/login/login'; 
+// src/app/app.routes.ts
 
-import { RegisterComponent } from './auth/register/register.component'; // componente standalone de registro
-import { HomeComponent } from './home/home';
+import { Routes } from '@angular/router';
 
+// Importa tus componentes
+import { LandingPage } from './pages/landing-page/landing-page';
+import { LoginComponent } from './auth/login/login';
+import { RegisterComponent } from './auth/register/register.component';
+import { CitasComponent } from './pages/citas/citas';
+import { AuthGuard } from './auth/auth-guard';
+
+// Simplemente exporta la constante 'routes'
 export const routes: Routes = [
-	{ path: '', component: HomeComponent },
-	{ path: 'login', component: LoginComponent },
-	{ path: 'register', component: RegisterComponent },
+  { path: '', component: LandingPage },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { 
+    path: 'citas', 
+    component: CitasComponent,
+  },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }

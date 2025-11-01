@@ -1,0 +1,40 @@
+.app-footer {
+  width: 100%;
+  background-color: #3A4A7D; /* O usa tu variable var(--brand-blue-dark) */
+  color: #e0e0e0;
+  padding: 2.5rem 5%;
+  margin-top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.app-footer .footer-column {
+  flex: 1;
+  min-width: 200px;
+}
+
+.app-footer .footer-column p {
+  margin: 0.5rem 0;
+}
+
+.app-footer .footer-column-right {
+  flex: 1;
+  min-width: 200px;
+  text-align: right;
+  color: #b0b0b0;
+  font-size: 0.85rem;
+}
+
+.app-footer .footer-column-right p {
+  margin: 0.5rem 0;
+}
+
+/* No olvides la media query si la tenías aquí */
+@media (max-width: 768px) {
+  .footer-column-right {
+    text-align: left;
+  }
+}

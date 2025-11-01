@@ -1,45 +1,58 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-// Importa tu servicio de autenticación cuando lo tengas
-// import { AuthService } from '../auth.service'; 
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router'; // <-- 1. Importa el Router
+import { AuthService } from '../auth.service'; // <-- 2. Importa el AuthService
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
-  templateUrl: './login.html',
-  styleUrls: ['./login.css']
+  selector: 'app-login',
+  // Corrección: Asegúrate de que el nombre del archivo sea el estándar
+  templateUrl: './login.html', 
+  styleUrls: ['./login.css']
 })
 export class LoginComponent implements OnInit {
 
-  loginForm!: FormGroup; // Usamos '!' para asegurar a TS que lo inicializaremos
+  loginForm!: FormGroup;
+  // Opcional: para mostrar un mensaje de error en el HTML
+  loginError: string | null = null; 
 
-  constructor(
-    private fb: FormBuilder
-    // private authService: AuthService // Descomenta al crear tu servicio
-  ) { }
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService, // <-- 3. Inyécta el AuthService
+    private router: Router          // <-- 4. Inyécta el Router
+  ) { }
 
-  ngOnInit(): void {
-    // Inicializamos el formulario
-    this.loginForm = this.fb.group({
-      // Definimos los controles y sus validadores
-      correoElectronico: ['', [Validators.required, Validators.email]],
-      contrasena: ['', [Validators.required, Validators.minLength(6)]]
-    });
-  }
+  ngOnInit(): void {
+    // Inicializa el formulario reactivo
+    this.loginForm = this.fb.group({
+      correoElectronico: ['', [Validators.required, Validators.email]],
+      contrasena: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
 
-  onSubmit(): void {
-    if (this.loginForm.invalid) {
-      // Si el formulario es inválido, marca todos los campos como "tocados"
-      // para que muestren sus errores (si los configuraste)
-      this.loginForm.markAllAsTouched();
-      return;
-    }
+  onSubmit(): void {
+    // Resetea el error en cada intento
+    this.loginError = null; 
 
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched(); // Muestra errores si el form es inválido
+      return;
+    }
 
-    console.log('Formulario válido:', this.loginForm.value);
-    
-  }
+    // Llama al servicio de autenticación
+    this.authService.login(this.loginForm.value).subscribe(
+      (response) => {
+        // --- ¡ÉXITO! ---
+        console.log('Inicio de sesión exitoso', response);
+        
+        // **AQUÍ ESTÁ LA REDIRECCIÓN**
+        this.router.navigate(['/citas']);
+      },
+      (error) => {
+        // --- ERROR ---
+        console.error('Error en inicio de sesión', error);
+        // Muestra un mensaje de error al usuario
+        this.loginError = 'Correo electrónico o contraseña incorrectos.';
+      }
+    );
+  }
 }

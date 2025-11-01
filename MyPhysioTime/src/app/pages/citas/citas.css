@@ -1,0 +1,462 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+:host {
+  display: block;
+  background-color: #f7f7f7;
+  min-height: 100vh;
+}
+
+.citas-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 10rem;
+}
+
+.citas-header {
+  background-color: #8c9ecb;
+  padding: 2.5rem 3rem;
+  border-radius: 0 0 25px 25px;
+  text-align: center;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.citas-header h1 {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 2.8rem;
+  margin: 0;
+}
+
+.scheduler-content {
+  padding: 0 1rem;
+}
+
+.scheduler-content h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #3A4A7D;
+  margin-bottom: 0.5rem;
+}
+
+.scheduler-content h3 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #3A4A7D;
+  margin-bottom: 2.5rem;
+}
+
+.scheduler-content h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #3A4A7D;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.time-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+.time-slot {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 1rem 1.8rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+.time-slot:hover:not(:disabled) {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.time-slot.disabled,
+.time-slot:disabled {
+  background-color: #f4f4f4;
+  color: #aaa;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.time-slot.selected {
+  background-color: #3A4A7D;
+  color: #ffffff;
+  border-color: #3A4A7D;
+}
+
+.info-section {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 3.5rem;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.info-section .note {
+  flex: 1;
+  min-width: 320px;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+.info-section .note strong {
+  color: #333;
+  font-weight: 700;
+}
+
+.info-section .image-wrapper {
+  flex: 1;
+  min-width: 320px;
+}
+
+.info-section .image-wrapper img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  display: block;
+}
+
+/* ============================================
+ ESTILOS PARA MODALES (Vista 2 y 3)
+============================================
+*/
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  z-index: 50;
+}
+
+/* --- Estilos Comunes (Modal Selección y Recibo) --- */
+.selection-card,
+.receipt-card {
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 950px;
+  margin: 0 auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.selection-content {
+  display: flex;
+}
+
+.selection-image-panel {
+  flex-basis: 40%;
+  background: url('https://i.imgur.com/2a4bF2s.jpg') no-repeat center center;
+  background-size: cover;
+  min-height: 700px;
+}
+
+.detail-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.detail-date {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #3A4A7D;
+  margin: 0.2rem 0 1rem 0;
+}
+
+.detail-time {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0.2rem 0 1.5rem 0;
+}
+
+.masaje-icon {
+  width: 30px;
+  height: 30px;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+}
+
+.masaje-info {
+  font-size: 0.9rem;
+}
+
+.masaje-info strong {
+  color: #333;
+  font-size: 1rem;
+}
+
+.masaje-info p {
+  color: #666;
+  margin: 0.2rem 0 0 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* --- Modal 1: Selección de Masaje --- */
+.btn-regresar {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  z-index: 101;
+  padding: 5px 10px;
+}
+
+.selection-details-panel {
+  flex-basis: 60%;
+  padding: 3rem 3.5rem;
+}
+
+.select-massage {
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+  margin-top: 1.5rem;
+}
+
+.masaje-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.masaje-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 30px 1fr 40px;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.masaje-card:hover {
+  border-color: #3A4A7D;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* === [CORRECCIÓN DE ESTILO] === */
+.masaje-card.selected {
+  background-color: #3A4A7D;
+  border-color: #3A4A7D;
+  color: #ffffff;
+}
+.masaje-card.selected .masaje-info strong,
+.masaje-card.selected .masaje-info p,
+.masaje-card.selected .masaje-precio {
+  color: #ffffff;
+}
+.masaje-card.selected .masaje-icon {
+  background-color: #ffffff;
+}
+/* === [FIN DE CORRECCIÓN] === */
+
+.masaje-precio {
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+  text-align: right;
+}
+
+.payment-footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.paypal-info {
+  font-size: 0.85rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+}
+
+.paypal-logo {
+  height: 15px;
+  margin-left: 8px;
+}
+
+.btn-pago {
+  background-color: #3A4A7D;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-pago:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+/* --- [ESTILOS FALTANTES AÑADIDOS] --- */
+/* --- Modal 2: Recibo de Pago --- */
+.receipt-card {
+  max-width: 850px;
+}
+
+.btn-cerrar {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  z-index: 101;
+  line-height: 30px;
+}
+
+.receipt-details-panel {
+  flex-basis: 60%;
+  padding: 3rem 3.5rem;
+}
+
+.receipt-success {
+  color: #28a745;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.receipt-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 1.5rem 0;
+}
+
+.masaje-card-recibo {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 10px;
+  align-items: center;
+  background-color: #f9f9f9;
+  margin-top: 0.5rem;
+}
+
+.location-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 0.5rem;
+}
+
+.location-icon {
+  width: 30px;
+  height: 30px;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+}
+
+.location-info {
+  flex: 1;
+  font-weight: 600;
+  color: #333;
+}
+
+.location-map {
+  width: 80px;
+  height: 50px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+.receipt-disclaimer {
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 2rem;
+}
+
+.receipt-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn-imprimir {
+  background: none;
+  border: 1px solid #3A4A7D;
+  color: #3A4A7D;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-continuar {
+  background-color: #3A4A7D;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Media query para hacer que el modal sea de una sola columna en móviles */
+@media (max-width: 768px) {
+  .selection-image-panel {
+    display: none; /* Ocultar la imagen de piedras en móviles */
+  }
+
+  .selection-details-panel,
+  .receipt-details-panel {
+    flex-basis: 100%;
+    padding: 2rem;
+  }
+
+  .masaje-list {
+    grid-template-columns: 1fr; /* Una sola columna para masajes */
+  }
+}
