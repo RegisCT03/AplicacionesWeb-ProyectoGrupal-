@@ -8,7 +8,6 @@ import { RegisterComponent } from './register/register.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    LoginComponent,
     RegisterComponent
   ]
 })

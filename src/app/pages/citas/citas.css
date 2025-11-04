@@ -123,16 +123,19 @@ body {
 }
 
 .info-section .image-wrapper img {
+  background-image: url(../../../assets/FT7.jpg);
   width: 100%;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   display: block;
-}
+  height: 250px;
+  align-items: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
-/* ============================================
- ESTILOS PARA MODALES (Vista 2 y 3)
-============================================
-*/
+}
 
 .modal-overlay {
   position: fixed;
@@ -143,10 +146,30 @@ body {
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
   z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem; 
+  box-sizing: border-box;
 }
 
-/* --- Estilos Comunes (Modal Selección y Recibo) --- */
-.selection-card,
+.selection-card {
+  background: white;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 950px;
+  max-height: 90vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  display: flex;
+  padding: 0;
+}
+
 .receipt-card {
   background-color: #ffffff;
   width: 90%;
@@ -160,17 +183,20 @@ body {
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   overflow: hidden;
+  max-height: 90vh;
+  display: flex;
 }
 
 .selection-content {
   display: flex;
+  width: 100%;
+  max-height: 90vh;
 }
 
 .selection-image-panel {
   flex-basis: 40%;
-  background: url('https://i.imgur.com/2a4bF2s.jpg') no-repeat center center;
+  background: url('.././../../assets/descarga\ \(6\).jpg') no-repeat center center;
   background-size: cover;
-  min-height: 700px;
 }
 
 .detail-label {
@@ -216,7 +242,6 @@ body {
   line-height: 1.4;
 }
 
-/* --- Modal 1: Selección de Masaje --- */
 .btn-regresar {
   position: absolute;
   top: 20px;
@@ -234,6 +259,7 @@ body {
 .selection-details-panel {
   flex-basis: 60%;
   padding: 3rem 3.5rem;
+  overflow-y: auto;
 }
 
 .select-massage {
@@ -267,7 +293,6 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* === [CORRECCIÓN DE ESTILO] === */
 .masaje-card.selected {
   background-color: #3A4A7D;
   border-color: #3A4A7D;
@@ -281,7 +306,6 @@ body {
 .masaje-card.selected .masaje-icon {
   background-color: #ffffff;
 }
-/* === [FIN DE CORRECCIÓN] === */
 
 .masaje-precio {
   font-weight: 600;
@@ -306,11 +330,6 @@ body {
   align-items: center;
 }
 
-.paypal-logo {
-  height: 15px;
-  margin-left: 8px;
-}
-
 .btn-pago {
   background-color: #3A4A7D;
   color: white;
@@ -327,8 +346,6 @@ body {
   cursor: not-allowed;
 }
 
-/* --- [ESTILOS FALTANTES AÑADIDOS] --- */
-/* --- Modal 2: Recibo de Pago --- */
 .receipt-card {
   max-width: 850px;
 }
@@ -353,6 +370,7 @@ body {
 .receipt-details-panel {
   flex-basis: 60%;
   padding: 3rem 3.5rem;
+  overflow-y: auto;
 }
 
 .receipt-success {
@@ -444,19 +462,61 @@ body {
   cursor: pointer;
 }
 
-/* Media query para hacer que el modal sea de una sola columna en móviles */
 @media (max-width: 768px) {
+  .selection-card,
+  .receipt-card {
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+    top: 0;
+    left: 0;
+    transform: none;
+    border-radius: 0;
+  }
+
+  .selection-content {
+     max-height: 100vh;
+  }
+
   .selection-image-panel {
-    display: none; /* Ocultar la imagen de piedras en móviles */
+    display: none;
   }
 
   .selection-details-panel,
   .receipt-details-panel {
     flex-basis: 100%;
     padding: 2rem;
+    max-height: 100%;
   }
 
   .masaje-list {
-    grid-template-columns: 1fr; /* Una sola columna para masajes */
+    grid-template-columns: 1fr;
+  }
+
+  .btn-regresar {
+    top: 10px;
+    left: 10px;
+  }
+
+  .btn-cerrar {
+    top: 10px;
+    right: 10px;
+  }
+
+  .payment-footer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .btn-pago {
+    width: 100%;
+  }
+
+  .receipt-actions {
+    flex-direction: column;
+  }
+
+  .btn-imprimir, .btn-continuar {
+    width: 100%;
   }
 }
