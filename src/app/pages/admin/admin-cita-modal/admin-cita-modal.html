@@ -1,0 +1,48 @@
+<div class="modal-overlay" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <!-- Botón Cerrar -->
+    <button class="btn-close" (click)="closeModal()">×</button>
+
+    <div class="modal-layout">
+      <!-- Imagen Decorativa Izquierda -->
+      <div class="modal-imagen">
+        <div class="planta-decorativa">
+          <img src="assets/images/planta-decorativa.png" alt="Planta decorativa" />
+        </div>
+      </div>
+
+      <!-- Contenido del Modal -->
+      <div class="modal-body">
+        <p class="modal-subtitle">La fecha y hora de la cita es:</p>
+        <h2 class="modal-fecha">{{ fecha }}</h2>
+
+        <p class="modal-horario-label">En el horario de:</p>
+        <h3 class="modal-horario">{{ horario }}</h3>
+
+        <p class="modal-servicio-label">Elejiste el siguiente masaje:</p>
+
+        <!-- Servicio -->
+        <div class="servicio-card">
+          <div class="servicio-icono">{{ citaData.servicio.icono }}</div>
+          <div class="servicio-info">
+            <h4 class="servicio-nombre">{{ citaData.servicio.nombre }}</h4>
+            <p class="servicio-descripcion">{{ citaData.servicio.descripcion }}</p>
+          </div>
+        </div>
+
+        <!-- Datos del Cliente -->
+        <div class="cliente-info">
+          <p class="cliente-label">Los datos del usuario son:</p>
+          <p class="cliente-nombre">{{ citaData.cliente.nombre }}</p>
+          <p class="cliente-telefono">{{ citaData.cliente.telefono }}</p>
+        </div>
+
+        <!-- Botones de Acción -->
+        <div class="modal-actions">
+          <button class="btn-secundario" (click)="imprimir()">Imprimir</button>
+          <button class="btn-primario" (click)="continuar()">Continuar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
