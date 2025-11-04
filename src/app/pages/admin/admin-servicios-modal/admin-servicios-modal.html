@@ -1,0 +1,73 @@
+<div class="modal-overlay" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <!-- Botón Cerrar -->
+    <button class="btn-close" (click)="closeModal()">×</button>
+
+    <div class="modal-layout">
+      <!-- Contenido Principal -->
+      <div class="modal-main">
+        <div class="modal-header-section">
+          <span class="icono-regresar" (click)="closeModal()">← Regresar</span>
+          <h2 class="modal-title">Revisa tus servicios y modifica lo necesario:</h2>
+          <p class="modal-subtitle">Selecciona un tipo de masaje</p>
+        </div>
+
+        <!-- Grid de Servicios -->
+        <div class="servicios-grid">
+          <div 
+            class="servicio-card" 
+            *ngFor="let servicio of servicios"
+            [class.seleccionado]="servicio.seleccionado"
+            (click)="seleccionarServicio(servicio)">
+            <div class="servicio-icono">{{ servicio.icono }}</div>
+            <div class="servicio-info">
+              <h4 class="servicio-nombre">{{ servicio.nombre }}</h4>
+              <p class="servicio-descripcion">{{ servicio.descripcion }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulario de Modificación -->
+        <div class="form-modificacion">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="modificar-titulo">Modificar título</label>
+              <input 
+                type="text" 
+                id="modificar-titulo" 
+                [(ngModel)]="tituloModificar"
+                placeholder="Nombre del servicio">
+            </div>
+            <div class="form-group">
+              <label for="modificar-precio">Modificar Precio</label>
+              <input 
+                type="text" 
+                id="modificar-precio" 
+                [(ngModel)]="precioModificar"
+                placeholder="Precio">
+            </div>
+          </div>
+          <div class="form-group full-width">
+            <label for="modificar-descripcion">Modificar Descripción</label>
+            <textarea 
+              id="modificar-descripcion" 
+              rows="3"
+              placeholder="Descripción del servicio"></textarea>
+          </div>
+        </div>
+
+        <!-- Botón Continuar -->
+        <div class="modal-actions">
+          <button class="btn-continuar" (click)="continuar()">Continuar</button>
+        </div>
+      </div>
+
+      <!-- Imagen Decorativa Derecha -->
+      <div class="modal-imagen">
+        <div class="planta-decorativa">
+          <img src="assets/planta-decorativa.png" alt="Planta decorativa" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
