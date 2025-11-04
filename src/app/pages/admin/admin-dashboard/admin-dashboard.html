@@ -1,0 +1,99 @@
+<div class="admin-dashboard">
+  <!-- Header -->
+  <header class="dashboard-header">
+    <h1 class="header-title">Maneja <strong>tú negocio</strong></h1>
+  </header>
+
+  <!-- Main Content -->
+  <div class="dashboard-content">
+    <!-- Sección de Citas -->
+    <section class="citas-section">
+      <h2 class="section-title">Observa tus <strong>citas pendientes</strong></h2>
+      <p class="fecha-actual">{{ getFechaFormateada() }}</p>
+      <p class="subtitle">Toca para ver información detallada de la cita:</p>
+
+      <!-- Grid de Horarios -->
+      <div class="horarios-grid">
+        <button 
+          *ngFor="let horario of horarios"
+          class="horario-btn"
+          [class.selected]="horario === selectedHorario"
+          (click)="selectHorario(horario)">
+          {{ horario }}
+        </button>
+      </div>
+
+      <div class="gestionar-horarios-container">
+        <button class="btn-gestionar-horarios" (click)="openHorarioModal()">
+          Gestionar horarios disponibles
+        </button>
+      </div>
+    </section>
+
+    <!-- Sección de Acciones Rápidas -->
+    <div class="acciones-rapidas">
+      <div class="acciones-left">
+        <!-- Historial de Clientes -->
+        <div class="accion-card">
+          <h3 class="accion-title">Consulta el <strong>historial de clientes</strong></h3>
+          <p class="accion-description">Consulta un breve historial de tus últimas sesiones</p>
+          <button class="btn-accion" (click)="navegarHistorial()">
+            Revisa los últimos clientes atendidos
+          </button>
+        </div>
+
+        <!-- Gestión de Servicios -->
+        <div class="accion-card">
+          <h3 class="accion-title">Gestiona tus <strong>servicios</strong></h3>
+          <p class="accion-description">Podrás anexar, eliminar o modificar los diferentes servicios que tienes disponibles</p>
+          <button class="btn-accion" (click)="navegarServicios()">
+            Gestionar mis servicios
+          </button>
+        </div>
+      </div>
+
+      <!-- Imagen Decorativa -->
+      <div class="imagen-decorativa">
+        <div class="imagen-placeholder">
+          <!-- Aquí va la imagen de fisioterapia -->
+          <img src="https://images.pexels.com/photos/5240637/pexels-photo-5240637.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fisioterapia" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="dashboard-footer">
+    <p>No olvides mantener toda tu información actualizada</p>
+  </footer>
+
+  <!-- Modales -->
+  <!-- Modal de Cita -->
+  <app-admin-cita-modal 
+    *ngIf="showCitaModal"
+    [horario]="selectedHorario"
+    [fecha]="getFechaFormateada()"
+    (close)="closeCitaModal()">
+  </app-admin-cita-modal>
+
+  <!-- Modal de Horarios -->
+  <app-admin-horario-modal 
+    *ngIf="showHorarioModal"
+    [fecha]="getFechaFormateada()"
+    [horarios]="horarios"
+    [horarioSeleccionado]="selectedHorario"
+    (close)="closeHorarioModal()">
+  </app-admin-horario-modal>
+
+  <!-- Modal de Historial -->
+  <app-admin-historial-modal 
+    *ngIf="showHistorialModal"
+    (close)="closeHistorialModal()">
+  </app-admin-historial-modal>
+
+  <!-- Modal de Servicios -->
+  <app-admin-servicios-modal 
+    *ngIf="showServiciosModal"
+    (close)="closeServiciosModal()">
+  </app-admin-servicios-modal>
+</div>
