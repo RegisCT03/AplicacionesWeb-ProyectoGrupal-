@@ -1,28 +1,25 @@
-/* Contenedor principal */
 .login-wrapper {
   display: flex;
-  width: 80vw; /* O un ancho fijo, ej: 900px */
+  width: 80vw;
   max-width: 1000px;
-  margin: 5rem auto; /* Centrado en la página */
+  margin: 5rem auto;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
-  overflow: hidden; /* Para que los bordes redondeados afecten a los hijos */
+  overflow: hidden; 
 }
 
-/* Panel de la imagen (Izquierda) */
 .image-panel {
-  flex: 1; /* Ocupa la mitad del espacio */
-  /* Puedes colocar una imagen real en la propiedad background-image o usar una etiqueta <img> en HTML. */
-  background-color: #e9ecef; /* color de fondo de reserva */
+  flex: 1; 
+  background-color: #e9ecef; 
+  background-image: url('../../../assets/login.jpg');
   background-position: center center;
   background-size: cover;
-  min-height: 500px; /* Ajusta la altura */
+  min-height: 500px;
 }
 
-/* Panel del formulario (Derecha) */
 .form-panel {
-  flex: 1; /* Ocupa la otra mitad */
+  flex: 1;
   padding: 3rem;
   display: flex;
   flex-direction: column;
@@ -32,11 +29,10 @@
 .form-panel h2 {
   font-size: 2rem;
   font-weight: bold;
-  color: #333; /* O tu color de marca */
+  color: #333; 
   margin-bottom: 2rem;
 }
 
-/* Estilos para los campos del formulario */
 .form-group {
   margin-bottom: 1.5rem;
 }
@@ -53,16 +49,15 @@
   padding: 0.75rem 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
-  box-sizing: border-box; /* Importante para que el padding no afecte el ancho */
+  box-sizing: border-box; 
 }
 
-/* Estilos del botón */
 .submit-button {
   width: 100%;
   padding: 0.75rem;
   border: none;
   border-radius: 8px;
-  background-color: #3A4A7D; /* El color azul de tu diseño */
+  background-color: #3A4A7D;
   color: white;
   font-size: 1rem;
   font-weight: bold;
@@ -71,7 +66,7 @@
 }
 
 .submit-button:hover {
-  background-color: #2c3a6d; /* Un tono más oscuro al pasar el mouse */
+  background-color: #2c3a6d; 
 }
 
 .submit-button:disabled {
@@ -79,7 +74,6 @@
   cursor: not-allowed;
 }
 
-/* Enlace de registro */
 .register-link {
   margin-top: 2rem;
   text-align: center;
