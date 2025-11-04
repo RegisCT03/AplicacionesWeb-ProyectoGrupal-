@@ -1,0 +1,49 @@
+<div class="modal-overlay" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <!-- Botón Cerrar -->
+    <button class="btn-close" (click)="closeModal()">×</button>
+
+    <div class="modal-layout">
+      <!-- Contenido Principal -->
+      <div class="modal-main">
+        <div class="modal-header-section">
+          <span class="icono-regresar">← Regresar</span>
+          <h2 class="modal-title">Historial de las citas atendidas hasta el momento:</h2>
+        </div>
+
+        <!-- Lista de Citas -->
+        <div class="citas-lista">
+          <div class="cita-item" *ngFor="let cita of citas">
+            <div class="cita-info-principal">
+              <div class="cliente-info">
+                <h4 class="cliente-nombre">{{ cita.cliente }}</h4>
+                <p class="cita-fecha-hora">{{ cita.fecha }}</p>
+                <p class="cita-horario">{{ cita.hora }}</p>
+              </div>
+            </div>
+            
+            <div class="cita-servicio">
+              <div class="servicio-icono">{{ cita.icono }}</div>
+              <div class="servicio-detalles">
+                <p class="servicio-nombre">{{ cita.servicio }}</p>
+                <p class="servicio-precio">{{ cita.precio }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón Imprimir -->
+        <div class="modal-actions">
+          <button class="btn-imprimir" (click)="imprimir()">Imprimir</button>
+        </div>
+      </div>
+
+      <!-- Imagen Decorativa Derecha -->
+      <div class="modal-imagen">
+        <div class="planta-decorativa">
+          <img src="assets/planta-decorativa.png" alt="Planta decorativa" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
