@@ -42,8 +42,16 @@
 }
 
 .hero-image img {
-  width: 500px;
-  border-radius: 200px;
+    background-image: url('../../../assets/FT2.jpg');
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+    width: 450px; 
+    height: 550px;
+    overflow: hidden; 
+    border-radius: 40% 60% 70% 30% / 30% 30% 70% 70%; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+    margin-left: 20px;
 }
 
 .hero-extra {
@@ -73,14 +81,14 @@
 .hero-extra p {
   text-align: left;
   margin: 0;
-  flex: 2; /* Toma más espacio que el botón */
+  flex: 2; 
   font-size: 1.1rem;
   color: #555;
   margin-left:250px;
 }
 
 .hero-extra button.btn-primary {
-  flex: 0 0 auto; /* No crece ni se encoge */
+  flex: 0 0 auto; 
   text-align: end;
   margin-right: 250px;
   font-size: 1.3rem;

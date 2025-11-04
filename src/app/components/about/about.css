@@ -1,34 +1,36 @@
-/* Layout: imagen a la izquierda, texto a la derecha */
 .about {
   display: flex;
   gap: 40px;
   align-items: flex-start;
-  padding: 40px 10%; /* márgenes laterales según diseño del proyecto */
+  padding: 40px 10%;
   margin-top: 40px;
 }
 
 .about .about-container {
-  flex: 1; /* imagen ocupa un espacio proporcional */
+  flex: 1; 
+  background-image: url('../../../assets/FT3.jpg');
+  background-size: cover;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  min-height: 400px; 
+  width: 100%; 
   display: flex;
-  justify-content: flex-start; /* imagen pegada a la izquierda dentro de su contenedor */
+  justify-content: flex-start;
   align-items: center;
 }
-
 .about .about-container img {
-  width: 100%;
-  max-width: 420px; /* controla el tamaño máximo de la imagen */
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
+  display: none;
 }
 
 .about-info {
-  flex: 1.4; /* el bloque de texto toma más espacio */
+  flex: 1.4;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: left;
-  padding-left: 20px; /* separación entre imagen y texto */
+  padding-left: 20px;
 }
 
 .about-info h2 {
@@ -46,16 +48,16 @@
   line-height: 1.5;
 }
 
-/* Responsive: en pantallas pequeñas apilar verticalmente */
 @media (max-width: 768px) {
   .about {
-    flex-direction: column-reverse; /* texto arriba, imagen abajo (puedes cambiar a column si prefieres imagen arriba) */
+    flex-direction: column-reverse;
     padding: 30px 6%;
     gap: 20px;
   }
 
   .about .about-container {
     justify-content: center;
+    padding: 10px; 
   }
 
   .about .about-container img {

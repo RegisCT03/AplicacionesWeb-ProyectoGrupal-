@@ -25,11 +25,15 @@
   font-weight: 500;
 }
 
-.btn {
-  background-color: #0b2b5b;
-  color: white;
+.btn-primary { 
+  background-color: #0b2b5b; 
+  color: white;            
   padding: 8px 15px;
-  border-radius: 25px;
+  border-radius: 25px;     
   border: none;
   cursor: pointer;
+}
+
+.menu .btn-primary {
+  color: white; 
 }

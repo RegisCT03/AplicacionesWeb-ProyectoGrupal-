@@ -6,7 +6,6 @@
   padding: 10px;
 }
 
-/* Contenedor flex para el layout principal */
 .services section {
   display: flex;
   gap: 40px;
@@ -16,9 +15,9 @@
 
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columnas para el grid */
+  grid-template-columns: repeat(2, 1fr); 
   gap: 25px;
-  flex: 1.5; /* Toma más espacio que la imagen */
+  flex: 1.5;
 }
 
 .service {
@@ -26,11 +25,11 @@
   border-radius: 15px;
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  text-align: left; /* Alinea el texto a la izquierda */
+  text-align: left; 
 }
 
 .section-img {
-  flex: 1; /* Toma menos espacio que el grid */
+  flex: 1; 
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -42,14 +41,13 @@
   object-fit: cover;
 }
 
-/* Media query para dispositivos móviles */
 @media (max-width: 768px) {
   .services section {
     flex-direction: column;
   }
   
   .service-grid {
-    grid-template-columns: 1fr; /* Una columna en móvil */
+    grid-template-columns: 1fr; 
   }
   
   .section-img {
