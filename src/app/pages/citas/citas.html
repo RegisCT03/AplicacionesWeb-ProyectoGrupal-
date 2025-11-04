@@ -1,0 +1,137 @@
+<div class="citas-container">
+  
+  <header class="citas-header">
+    <h1>Crea tú momento relajante</h1>
+  </header>
+
+  <main class="scheduler-content">
+    <h2>Selecciona tú horario</h2>
+    <h3>{{ fechaSeleccionada }}</h3>
+
+    <section class="time-section">
+      <h4>Matutino</h4>
+      <div class="time-slots">
+        <button 
+          *ngFor="let item of horariosMatutinos"
+          class="time-slot"
+          [class.disabled]="!item.disponible"
+          [class.selected]="item.hora === horarioActivo"
+          [disabled]="!item.disponible"
+          (click)="seleccionarHorario(item)">
+          {{ item.hora }}
+        </button>
+      </div>
+    </section>
+
+    <section class="time-section">
+      <h4>Vespertino</h4>
+      <div class="time-slots">
+        <button 
+          *ngFor="let item of horariosVespertinos"
+          class="time-slot"
+          [class.disabled]="!item.disponible"
+          [class.selected]="item.hora === horarioActivo"
+          [disabled]="!item.disponible"
+          (click)="seleccionarHorario(item)">
+          {{ item.hora }}
+        </button>
+      </div>
+    </section>
+
+    <div class="info-section">
+      <div class="note">
+        <p><strong>Nota:</strong><br>
+        De manera momentanea, todos los horarios disponibles son los días lunes, consideralo para la elección de tú horario, los precios los encontrarás al seleccionar un horario.</p>
+      </div>
+      <div class="image-wrapper">
+        <img src="assets/images/massage-image.jpg" alt="Persona recibiendo un masaje"> 
+      </div>
+    </div>
+  </main>
+</div>
+<app-footer></app-footer>
+
+<div class="modal-overlay" *ngIf="horarioActivo || pagoExitoso"></div>
+
+<div class="selection-card" *ngIf="horarioActivo && !pagoExitoso">
+  <button (click)="regresar()" class="btn-regresar">
+    &larr; Regresar
+  </button>
+  <div class="selection-content">
+    <div class="selection-image-panel"></div>
+    <div class="selection-details-panel">
+      <p class="detail-label">Haz seleccionado:</p>
+      <h2 class="detail-date">{{ fechaSeleccionada }}</h2>
+      <p class="detail-label">En el siguiente horario:</p>
+      <h3 class="detail-time">de {{ horarioActivo }}</h3>
+
+      <p class="detail-label select-massage">Selecciona un tipo de masaje:</p>
+      
+      <div class="masaje-list">
+        <div *ngFor="let masaje of tiposDeMasaje" 
+             class="masaje-card"
+             [class.selected]="masaje === masajeSeleccionado"
+             (click)="seleccionarMasaje(masaje)">
+          
+          <div class="masaje-icon"></div> 
+          <div class="masaje-info">
+            <strong>{{ masaje.nombre }}</strong>
+            <p>{{ masaje.descripcion }}</p>
+          </div>
+          <div class="masaje-precio">${{ masaje.precio }}</div>
+        </div>
+      </div> 
+
+      <div class="payment-footer">
+        <div class="paypal-info">
+          Todos los pagos se realizaran por medio de: 
+          <img src="assets/images/paypal-logo.png" alt="PayPal" class="paypal-logo">
+        </div>
+        <button class="btn-pago" (click)="realizarPago()" [disabled]="!masajeSeleccionado">
+          Realizar Pago
+        </button>
+      </div>
+    </div> 
+  </div> 
+</div> 
+
+<div class="receipt-card" *ngIf="pagoExitoso">
+  
+  <button (click)="cerrarRecibo()" class="btn-cerrar">X</button>
+  
+  <div class="selection-content"> <div class="selection-image-panel"></div> <div class="receipt-details-panel">
+      <p class="receipt-success">Pago realizado con exito</p>
+      <h2 class="receipt-title">Recibo de tú operación</h2>
+
+      <p class="detail-label">La fecha y hora de tú cita es para el día</p>
+      <h3 class="detail-date">{{ fechaSeleccionada }}</h3>
+      
+      <p class="detail-label">En el horario de:</p>
+      <h3 class="detail-time">10:00am - 11:00am</h3> <p class="detail-label">Elegiste el siguiente masaje:</p>
+      <div class="masaje-card-recibo">
+        <div class="masaje-icon"></div>
+        <div class="masaje-info">
+          <strong>{{ masajeSeleccionado?.nombre }}</strong>
+          <p>{{ masajeSeleccionado?.descripcion }}</p>
+        </div>
+      </div>
+
+      <p class="detail-label">La ubicación es la siguiente:</p>
+      <div class="location-card">
+        <div class="location-icon"></div>
+        <div class="location-info">
+          <strong>{{ ubicacion }}</strong>
+        </div>
+        <div class="location-map">
+          </div>
+      </div>
+
+      <p class="receipt-disclaimer">Cualquier duda o aclaración al ##########</p>
+
+      <div class="receipt-actions">
+        <button class="btn-imprimir">Imprimir</button>
+        <button class="btn-continuar" (click)="cerrarRecibo()">Continuar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+/* Layout: imagen a la izquierda, texto a la derecha */
+.about {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  padding: 40px 10%; /* márgenes laterales según diseño del proyecto */
+  margin-top: 40px;
+}
+
+.about .about-container {
+  flex: 1; /* imagen ocupa un espacio proporcional */
+  display: flex;
+  justify-content: flex-start; /* imagen pegada a la izquierda dentro de su contenedor */
+  align-items: center;
+}
+
+.about .about-container img {
+  width: 100%;
+  max-width: 420px; /* controla el tamaño máximo de la imagen */
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.about-info {
+  flex: 1.4; /* el bloque de texto toma más espacio */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  padding-left: 20px; /* separación entre imagen y texto */
+}
+
+.about-info h2 {
+  margin: 0 0 8px 0;
+  color: #1a2c4d;
+}
+
+.about-info h3 {
+  margin: 0 0 12px 0;
+  color: #0b2b5b;
+}
+
+.about-info p {
+  color: #444;
+  line-height: 1.5;
+}
+
+/* Responsive: en pantallas pequeñas apilar verticalmente */
+@media (max-width: 768px) {
+  .about {
+    flex-direction: column-reverse; /* texto arriba, imagen abajo (puedes cambiar a column si prefieres imagen arriba) */
+    padding: 30px 6%;
+    gap: 20px;
+  }
+
+  .about .about-container {
+    justify-content: center;
+  }
+
+  .about .about-container img {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .about-info {
+    padding-left: 0;
+    margin-bottom: 10px;
+  }
+}
